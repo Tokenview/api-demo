@@ -6,8 +6,6 @@ public class WalletBean {
     private String address;
     private String keystore;
     private String privateKey;
-    private String name;
-    private int insert_type;
 
     public String getCoin_type() {
         return coin_type;
@@ -49,19 +47,15 @@ public class WalletBean {
         this.privateKey = privateKey;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getInsert_type() {
-        return insert_type;
-    }
-
-    public void setInsert_type(int insert_type) {
-        this.insert_type = insert_type;
+    @Override
+    public String toString() {
+        return "WalletBean{" +
+                "coin_type='" + coin_type + '\'' +
+                ", mnemonic='" + mnemonic + '\'' +
+                ", address='" + address + '\'' +
+                ", keystore='" + keystore + '\'' +
+                ", privateKey='" + privateKey + '\'' +
+                '}';
     }
 }

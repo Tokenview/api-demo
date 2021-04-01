@@ -25,10 +25,10 @@ public class BTCSign {
             long fee = (unspents.size() + outputs.size() * 2) * 148 - 10;
             //添加转出到的地址列表和数量
             for(int i = 0;i<outputs.size()-1;i++){
-                transaction.addOutput(Coin.valueOf(outputs.getJSONObject(i).getLong("amount")),Address.fromBase58(params,outputs.getJSONObject(i).getString("address")));
+                transaction.addOutput(Coin.valueOf(outputs.getJSONObject(i).getLong("amount")),Address.fromBase58(params,outputs.getJSONObject(i).getString("account")));
             }
             JSONObject outputChange = outputs.getJSONObject(outputs.size()-1);
-            transaction.addOutput(Coin.valueOf(outputChange.getLong("amount")-fee),Address.fromBase58(params, outputChange.getString("address")));
+            transaction.addOutput(Coin.valueOf(outputChange.getLong("amount")-fee),Address.fromBase58(params, outputChange.getString("account")));
         
             for (int i = 0; i < unspents.size(); i++) {
                 UTXO utxo = new UTXO(Sha256Hash.wrap(unspents.getJSONObject(i).getString("txid")),

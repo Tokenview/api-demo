@@ -50,7 +50,6 @@ public class BTCWalletUtil {
         bean.setAddress(address);
         bean.setKeystore("");
         bean.setPrivateKey(privateKeyAsWiF);
-        bean.setName(walletName);
         return bean;
     }
 
@@ -82,13 +81,11 @@ public class BTCWalletUtil {
         byte[] bytes = Numeric.hexStringToByteArray(redeemScript);
         byte[] bytes1 = Utils.sha256hash160(bytes);
         String p2shAddress = Address.fromP2SHHash(params, bytes1).toBase58();
-        System.out.println("p2sh address == "+p2shAddress);
+        System.out.println("p2sh account == "+p2shAddress);
         WalletBean bean=new WalletBean();
         bean.setCoin_type("BTC");
-        bean.setName("BTC");
         bean.setAddress(p2shAddress);
         bean.setMnemonic(getMnemonic(ds));
-        bean.setInsert_type(1);
         bean.setPrivateKey(dkKey.getPrivateKeyAsWiF(params));
         return bean;
     }
@@ -114,21 +111,20 @@ public class BTCWalletUtil {
         String hexPrivateKey = ecKey.getPrivateKeyAsHex();
         ECKey ecKey1 = ECKey.fromPrivate(Hex.decode(hexPrivateKey));
         Address address1 = ecKey1.toAddress(params);
-        System.out.println("bitcoin address == "+address1);
+        System.out.println("bitcoin account == "+address1);
         //获取Base58编码压缩后的私钥
         System.out.println("privateKeyHex == "+ecKey.getPrivateKeyAsHex());
         //ecKey.
         String privateKeyAsWiF = ecKey.getPrivateKeyAsWiF(params);
         System.out.println("privateKeyWif =="+privateKeyAsWiF);
         String address = ecKey.toAddress(params).toString();
-        System.out.println("bitcoin address == "+address);
+        System.out.println("bitcoin account == "+address);
         WalletBean bean = new WalletBean();
         bean.setCoin_type("BTC");
         bean.setMnemonic(getMnemonic(ds));
         bean.setAddress(address);
         bean.setKeystore("");
         bean.setPrivateKey(privateKeyAsWiF);
-        bean.setName(walletName);
         return bean;
     }
 
@@ -148,7 +144,6 @@ public class BTCWalletUtil {
             bean.setAddress(address);
             bean.setKeystore("");
             bean.setPrivateKey(privateKey);
-            bean.setName(" ");
             return bean;
         }catch (Exception e){
             e.printStackTrace();
@@ -181,14 +176,13 @@ public class BTCWalletUtil {
         String privateKeyAsWiF = ecKey.getPrivateKeyAsWiF(params);
         String address = ecKey.toAddress(params).toString();
         System.out.println("privateKey ===="+ecKey.getPrivateKeyAsHex());
-        System.out.println("address ====="+address);
+        System.out.println("account ====="+address);
         WalletBean bean = new WalletBean();
         bean.setCoin_type("BTC");
         bean.setMnemonic(getMnemonic(ds));
         bean.setAddress(address);
         bean.setKeystore("");
         bean.setPrivateKey(privateKeyAsWiF);
-        bean.setName(walletName);
         return bean;
     }
 
