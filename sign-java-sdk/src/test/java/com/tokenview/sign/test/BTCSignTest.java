@@ -39,7 +39,7 @@ public class BTCSignTest {
 
         JSONArray outputs = new JSONArray();
         JSONObject outputTo = new JSONObject();
-        outputTo.put("address","16SzvWdCrYsVsMuRp43TfqvGvibBah7s17");
+        outputTo.put("account","16SzvWdCrYsVsMuRp43TfqvGvibBah7s17");
         outputTo.put("amount",10000);
         outputs.add(outputTo);
         long outputToAmount = outputs
@@ -52,7 +52,7 @@ public class BTCSignTest {
             return;
         }
         JSONObject outputChange = new JSONObject();
-        outputChange.put("address","1LEHMmGUAzjvMFCoaoUsY46avHzCN3pUdQ");
+        outputChange.put("account","1LEHMmGUAzjvMFCoaoUsY46avHzCN3pUdQ");
         outputChange.put("amount",outputChangeAmount);
 
         outputs.add(outputChange);
